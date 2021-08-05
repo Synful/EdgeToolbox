@@ -1,0 +1,78 @@
+; Installation inf for the slsusb driver installation file
+;
+; (c) Copyright 2005 sls
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%Provider%
+DriverVer=06/15/2009,5.00.3000
+CatalogFile=slsbus.cat
+
+[SourceDisksNames.x86]
+1=%DiskString%,"slsusb.sys",,\x86
+
+[SourceDisksNames.amd64]
+1=%DiskString%,"slsusb.sys",,\x64
+
+[SourceDisksNames.x64]
+1=%DiskString%,"slsusb.sys",,\x64
+
+[SourceDisksFiles]
+slsusb.sys = 1
+
+[Manufacturer]
+%MfgName%=sls, x86, NTamd64, x64
+
+[SLS]
+%USB\VID_10c4&PID_81ad.DeviceDesc%=slsusb.Dev, USB\VID_10c4&PID_81ad
+
+[SLS.NTamd64]
+%USB\VID_10c4&PID_81ad.DeviceDesc%=slsusb.Dev, USB\VID_10c4&PID_81ad
+
+[SLS.x64]
+%USB\VID_10c4&PID_81ad.DeviceDesc%=slsusb.Dev, USB\VID_10c4&PID_81ad
+
+[DestinationDirs]
+;slsusb.Files.Ext = 10,System32\Drivers
+DefaultDestDir              = 11                    ; LDID_SYS
+slsusb.Files.Ext            = 12                    ; system32\drivers
+
+[slsusb.Dev.NT]
+CopyFiles=slsusb.Files.Ext
+
+[slsusb.Dev.NT.Services]
+Addservice = slsusb, 0x00000002, slsusb.AddService
+
+[slsusb.AddService]
+DisplayName    = %slsusb.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\slsusb.sys
+AddReg         = slsusb.AddReg
+LoadOrderGroup = Base
+
+[slsusb.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,slsusb.sys
+HKR,"Parameters","MaximumTransferSize",0x10001,65536
+HKR,"Parameters","DebugLevel",0x10001,2
+HKR,"Parameters","slsusbEnable",0x10001,0  ; 0 to disable suspend
+
+[slsusb.Files.Ext]
+slsusb.sys
+
+;---------------------------------------------------------------;
+
+[Strings]
+Provider="Edge Products"
+MfgName="Edge Products"
+DiskString="Edge Products CS/CTS Driver Installation Disk"
+USB\VID_10c4&PID_81ad.DeviceDesc="Edge Products CS/CTS Device"
+
+
+slsusb.SvcDesc="Edge CS/CTS Device Driver"
+

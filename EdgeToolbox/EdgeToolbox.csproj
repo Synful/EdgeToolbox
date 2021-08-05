@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6417974B-2037-4F27-9131-8342A994D7EA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EdgeToolbox</RootNamespace>
+    <AssemblyName>EdgeToolbox</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\..\..\..\Desktop\Tuner\MyStyle\MyStyle\bin\Debug\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DarkUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Edge.Common">
+      <HintPath>..\..\Fusion\FusionClient\bin\Debug\Edge.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Edge.Imaging">
+      <HintPath>..\..\..\..\..\Desktop\Tuner\MyStyle\MyStyle\bin\Debug\Edge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="EncryptorAssembly">
+      <HintPath>..\..\Fusion\FusionClient\bin\Debug\EncryptorAssembly.dll</HintPath>
+    </Reference>
+    <Reference Include="Kjs.AppLife.Update.Controller">
+      <HintPath>..\..\Fusion\FusionClient\bin\Debug\Kjs.AppLife.Update.Controller.dll</HintPath>
+    </Reference>
+    <Reference Include="MXZipLibrary">
+      <HintPath>..\..\Fusion\FusionClient\bin\Debug\MXZipLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ProteusCommand, Version=1.0.0.6, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Tuner\Fusion\FusionClient\bin\Debug\ProteusCommand.dll</HintPath>
+    </Reference>
+    <Reference Include="SLSUSBNET, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Powerteq\Fusion\SLSUSBNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="USBAssembly, Version=1.0.0.9612, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Tuner\Fusion\FusionClient\bin\Debug\USBAssembly.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="DataService\DataService.cs" />
+    <Compile Include="DataService\QueryCompletedEventArgs.cs" />
+    <Compile Include="DataService\QueryCompletedEventHandler.cs" />
+    <Compile Include="Dialogs\DialogFileDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogFileDownloader.Designer.cs">
+      <DependentUpon>DialogFileDownloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogInfo.Designer.cs">
+      <DependentUpon>DialogInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogAbout.Designer.cs">
+      <DependentUpon>DialogAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogLogin.Designer.cs">
+      <DependentUpon>DialogLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogUpdate.Designer.cs">
+      <DependentUpon>DialogUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\DialogVIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogVIN.Designer.cs">
+      <DependentUpon>DialogVIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docks\DockConsole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docks\DockConsole.Designer.cs">
+      <DependentUpon>DockConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docks\DockXmlEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docks\DockXmlEditor.Designer.cs">
+      <DependentUpon>DockXmlEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docks\DockTextEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docks\DockTextEditor.Designer.cs">
+      <DependentUpon>DockTextEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docks\DockFileSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docks\DockFileSystem.Designer.cs">
+      <DependentUpon>DockFileSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Docks\DockSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docks\DockSettings.Designer.cs">
+      <DependentUpon>DockSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EdgeDeviceLibrary\Communicator\Chameleon.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\Communicator_Base.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\EventNotificationDelegate.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\Evo2.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\Proteus.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\Severity.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\UploadListType.cs" />
+    <Compile Include="EdgeDeviceLibrary\Communicator\VINFormat.cs" />
+    <Compile Include="EdgeDeviceLibrary\Debugging.cs" />
+    <Compile Include="EdgeDeviceLibrary\DeviceConnector.cs" />
+    <Compile Include="EdgeDeviceLibrary\FileTransferBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EdgeDeviceLibrary\FileTransferDownload.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EdgeDeviceLibrary\FileTransferUpload.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EdgeDeviceLibrary\FusionService\AppendChunkCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CheckFileHashCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CheckFileHashCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearEraseSettingsCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearGetAllCriticalFilesCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearGetAllFilesCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearGetSpecificFilesCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearMakeStockWriterCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearResetToFactoryCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearSetStockCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearSKUChangedFromUserSerialNumCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\ClearSKUChangedFromUserSerialNumCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreateCustomCalibraionZipCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreateCustomCalibraionZipCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreateCustomFirmwareZipCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreateCustomFirmwareZipCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForHotUnlockCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForHotUnlockCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForRacingCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForRacingCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForTPMSControlCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUpdateUserForTPMSControlCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUserForHPTunersCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\CreatingUserForHPTunersCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\DeviceCanBeUpdatedCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\DeviceCanBeUpdatedCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\DownloadChunkCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\DownloadChunkCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\FinalizeUploadTransferCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\FinalizeUploadTransferCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\FusionService.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetAvailableCalibrationsCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetAvailableCalibrationsCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetAvailableFirmwareCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetAvailableFirmwareCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetBootloaderInfoCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetBootloaderInfoCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCanUpgradeSKUFromUserSerialNumCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCanUpgradeSKUFromUserSerialNumCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCriticalFilesListCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCriticalFilesListCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCurrentFwCalCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetCurrentFwCalCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetDeviceIDCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetDeviceIDCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetDeviceIDForSerialCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetDeviceIDForSerialCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFileSizeCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFileSizeCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFwCalChecksumCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFwCalChecksumCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFwCalDescriptionCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetFwCalDescriptionCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetListOfFilesToSendToDevice2CompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetListOfFilesToSendToDevice2CompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetListOfFilesToSendToDeviceCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetListOfFilesToSendToDeviceCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetMaxRequestLengthCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetMaxRequestLengthCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelFromUserSerialNumCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelFromUserSerialNumCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelLevelOffsetInSettingsCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelLevelOffsetInSettingsCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelStringCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetModelStringCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetProductIDFromModelStringCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetProductIDFromModelStringCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetSKUChangedFromUserSerialNumCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetSKUChangedFromUserSerialNumCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetSpecificFilesListCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetSpecificFilesListCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetStampedFileNameCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetStampedFileNameCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetTargetFirmCalIDsCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetTargetFirmCalIDsCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetUpdateFirmwareAndCalibrationIDsCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\GetUpdateFirmwareAndCalibrationIDsCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsEraseSettingsSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsEraseSettingsSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsForceUpdateSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsForceUpdateSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsGetAllCriticalFilesSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsGetAllCriticalFilesSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsGetAllFilesSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsGetAllFilesSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsMakeStockWriterSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsMakeStockWriterSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsResetToFactorySetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsResetToFactorySetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsSetStockFlagSetCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsSetStockFlagSetCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsUpdateEnabledForDeviceCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\IsUpdateEnabledForDeviceCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\LogCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\NewCreateCustomCalibraionZipCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\NewCreateCustomCalibraionZipCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\Notify_ReceivedNewStockFilesCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\RetrieveUserHotUnlockCodeCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\RetrieveUserHotUnlockCodeCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\RetrieveUserRacingCodeCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\RetrieveUserRacingCodeCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\SetDeviceHasCustomTuningCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\SetFileAsSentCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\SetPlatformTypeCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\SetUpdateCompleteCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\UpdateUserForHotUnlockCompletedEventArgs.cs" />
+    <Compile Include="EdgeDeviceLibrary\FusionService\UpdateUserForHotUnlockCompletedEventHandler.cs" />
+    <Compile Include="EdgeDeviceLibrary\Models\GmskRequest.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\ChecksumInfo.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEC1000.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEC2200.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF1100.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF1200.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF2100.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF2100_Evo2.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF2400.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\EEF2400_Evo2.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\Evo15004.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\FileProcessFlag.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\Generic.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\Product_Base.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\ProteusProduct.cs" />
+    <Compile Include="EdgeDeviceLibrary\Products\UploadedFilesXml.cs" />
+    <Compile Include="EdgeDeviceLibrary\UpdateRecord.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateForm.Designer.cs">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\DialogFileDownloader.resx">
+      <DependentUpon>DialogFileDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogInfo.resx">
+      <DependentUpon>DialogInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogAbout.resx">
+      <DependentUpon>DialogAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogLogin.resx">
+      <DependentUpon>DialogLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogUpdate.resx">
+      <DependentUpon>DialogUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogVIN.resx">
+      <DependentUpon>DialogVIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docks\DockConsole.resx">
+      <DependentUpon>DockConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docks\DockXmlEditor.resx">
+      <DependentUpon>DockXmlEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docks\DockTextEditor.resx">
+      <DependentUpon>DockTextEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docks\DockFileSystem.resx">
+      <DependentUpon>DockFileSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docks\DockSettings.resx">
+      <DependentUpon>DockSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\application_16x.png" />
+    <Content Include="Resources\Close_16xLG.png" />
+    <Content Include="Resources\Collection_16xLG.png" />
+    <Content Include="Resources\Console.png" />
+    <Content Include="Resources\document_16xLG.png" />
+    <Content Include="Resources\Files_7954.png" />
+    <Content Include="Resources\folder_16x.png" />
+    <Content Include="Resources\folder_Closed_16xLG.png" />
+    <Content Include="Resources\NewFile_6276.png" />
+    <Content Include="Resources\properties_16xLG.png" />
+    <Content Include="Resources\RefactoringLog_12810.png" />
+    <Content Include="Resources\StatusAnnotations_Information_16xLG_color.png" />
+    <Content Include="Resources\StatusAnnotations_Information_16xMD_color.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
