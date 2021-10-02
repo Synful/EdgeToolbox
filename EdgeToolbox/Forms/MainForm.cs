@@ -131,19 +131,19 @@ namespace EdgeToolbox {
 			} catch(Exception ex) {
 				try {
 					if(deviceCon.communicator.GetPartNumber() == string.Empty) {
-						//ErrorForm.ShowError("Boot Loader Error", "Please follow the instructions provided by technical support.", "Product Part Number not set.");
+						DarkMessageBox.ShowError(this, "Product Part Number not set.\nPlease follow the instructions provided by technical support.", "Boot Loader Error");
 						return;
 					}
 				} catch(Exception ex2) {
-					//ErrorForm.ShowError("Boot Loader Error", "Please follow the instructions provided by technical support.", ex2.Message);
+					DarkMessageBox.ShowError(this, $"{ex2.Message}\nPlease follow the instructions provided by technical support.", "Boot Loader Error");
 					return;
 				}
-				//ErrorForm.ShowError("Boot Loader Error", "Please follow the instructions provided by technical support.", ex.Message);
+				DarkMessageBox.ShowError(this, $"{ex.Message}\nPlease follow the instructions provided by technical support.", "Boot Loader Error");
 				return;
 			}
 			string partNumber = deviceCon.communicator.GetPartNumber();
 			if (partNumber.Length == 0) {
-				//ErrorForm.ShowError("Device Connection Error", "Please follow the instructions provided by technical support.", "Product Part Number not set.");
+				DarkMessageBox.ShowError(this, "Product Part Number not set.\nPlease follow the instructions provided by technical support.", "Device Connection Error");
 				return;
 			}
 			if (!deviceCon.communicator.HasSkuChanged() && deviceCon.communicator.GetUnsupportedSkus().Contains(partNumber)) {
@@ -160,9 +160,9 @@ namespace EdgeToolbox {
 			}
 			string updateMessage;
 			if (!deviceCon.communicator.IsUpdateEnabledForDevice(out updateMessage)) {
-				//ErrorForm.ShowError("Update Message", "Update Is Currently Unavailable For This Product", updateMessage, exitApplication: true);
+				DarkMessageBox.ShowError(this, $"{updateMessage}\nUpdate Is Currently Unavailable For This Product", "Update Message");
 			} else {
-				//ErrorForm.ShowError("Update Message", "Information: ", updateMessage, exitApplication: false);
+				//DarkMessageBox.ShowError(this, $"Information:\n{updateMessage}", "Update Message");
 			}
 			Application.DoEvents();
 			if (deviceCon.communicator.NeedsGmsk()) {
@@ -172,11 +172,11 @@ namespace EdgeToolbox {
 				try {
 					if(!deviceCon.communicator.IsMakeStockWriterSet()) {
 						if(deviceCon.communicator.IsProgrammingInterrupted()) {
-							//ErrorForm.ShowError("Device Status Error", "Connect your device to your vehicle and follow the instructions on its display.", "If programming fails, contact support.");
+							DarkMessageBox.ShowError(this, "Connect your device to your vehicle and follow the instructions on its display.\nIf programming fails, contact support.", "Device Status Error");
 							return;
 						}
 						if(deviceCon.communicator.IsProgrammedToLevel()) {
-							//ErrorForm.ShowError("Device Status Error", "Return vehicle to stock, then try to update again.", "Re-Install the device in your vehicle and return the power program to stock level 0, then reconnect the device to Fusion.");
+							DarkMessageBox.ShowError(this, "Return vehicle to stock, then try to update again.\nRe-Install the device in your vehicle and return the power program to stock level 0, then reconnect the device to Fusion.", "Device Status Error");
 							return;
 						}
 					}
@@ -188,7 +188,7 @@ namespace EdgeToolbox {
 					}
 				}
 			} else if(deviceCon.communicator.IsProgrammedToLevel()) {
-				//ErrorForm.ShowError("Device Status Error", "Return vehicle to stock, then try to update again.", "Re-Install the device in your vehicle and return the power program to stock level 0, then reconnect the device to Fusion.");
+				DarkMessageBox.ShowError(this, "Return vehicle to stock, then try to update again.\nRe-Install the device in your vehicle and return the power program to stock level 0, then reconnect the device to Fusion.", "Device Status Error");
 				return;
 			}
 			if (deviceCon.communicator.SendSupportFilesToDevice(lastStep: true)) { }
@@ -197,11 +197,11 @@ namespace EdgeToolbox {
 			p = Proteus.Instance();
 			dt_Info.Visible = true;
 			long[] versions = deviceCon.communicator.GetUpdateFirmwareAndCalibrationIDs(deviceCon.communicator.GetSerialNumber().ToString(), deviceCon.communicator.GetFirmwareVersionString(), deviceCon.communicator.GetCalibrationVersionString());
-			if (p.DeviceCanBeUpdated() && versions != null) {
-				deviceCon.FirmwareIDTarget = versions[0];
-				deviceCon.CalibrationIDTarget = versions[1];
+			//if (p.DeviceCanBeUpdated() && versions != null) {
+				//deviceCon.FirmwareIDTarget = versions[0];
+				//deviceCon.CalibrationIDTarget = versions[1];
 				dt_Update.Visible = true;
-			}
+			//}
 			deviceCon.UnlockFeature("hotlevels");
 			DockFileSystem.Instance().refreshBtn_Click(null, EventArgs.Empty);
 			UpdateStatus("Device Awaiting Commands...");
@@ -283,13 +283,51 @@ namespace EdgeToolbox {
 			return result;
 		}
 
+		/*
+		     public enum FlashArea : byte {
+        MainFlash = 0,
+        SecondFlash = 1,
+        NIOS_App = 10,
+        NIOS_FPGA_BC = 11,
+        MSP430App = 12,
+        ErrorLog = 13,
+        NotSet = 255
+    }
+		 */
+
+
 		private void dt_Info_Click(object sender, EventArgs e) {
-			new DialogInfo().ShowDialog();
+
+			Cmd_MA_ReadFlash readMainFlash = new Cmd_MA_ReadFlash(false, FlashArea.MainFlash, 0, 9000000);
+			Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readMainFlash);
+			File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/MainFlash.bin", readMainFlash.FlashData);
+
+			//Cmd_MA_ReadFlash readSecondFlash = new Cmd_MA_ReadFlash(false, FlashArea.SecondFlash, 0, 1000000);
+			//Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readSecondFlash);
+			//File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/SecondFlash.bin", readSecondFlash.FlashData);
+
+			Cmd_MA_ReadFlash readNIOS_App = new Cmd_MA_ReadFlash(false, FlashArea.NIOS_App, 0, 1000000);
+			Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readNIOS_App);
+			File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/NIOS_App.bin", readNIOS_App.FlashData);
+
+			Cmd_MA_ReadFlash readNIOS_FPGA_BC = new Cmd_MA_ReadFlash(false, FlashArea.NIOS_FPGA_BC, 0, 1000000);
+			Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readNIOS_FPGA_BC);
+			File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/NIOS_FPGA_BC.bin", readNIOS_FPGA_BC.FlashData);
+
+			Cmd_MA_ReadFlash readMSP430App = new Cmd_MA_ReadFlash(false, FlashArea.MSP430App, 0, 1000000);
+			Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readMSP430App);
+			File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/MSP430App.bin", readMSP430App.FlashData);
+
+			Cmd_MA_ReadFlash readErrorLog = new Cmd_MA_ReadFlash(false, FlashArea.ErrorLog, 0, 0);
+			Proteus.Instance()._comm.IssueCommand(Proteus.Instance()._serialNumber, readErrorLog);
+			File.WriteAllBytes($"{AppDomain.CurrentDomain.BaseDirectory}Files/{Proteus.Instance().GetPartNumber(true)}/Bins/ErrorLog.bin", readErrorLog.FlashData);
+
+			//new DialogInfo().ShowDialog();
 		}
 
         private void dt_Update_Click(object sender, EventArgs e) {
-			new DialogUpdate().ShowDialog()
-			//new UpdateForm().ShowDialog();
+			//new DialogUpdate().ShowDialog();
+			new UpdateForm().ShowDialog();
 		}
 
 		private void DisplayMsg(string message) {

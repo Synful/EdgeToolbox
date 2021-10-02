@@ -77,3 +77,28 @@ C:\Users\Synful\Documents\Visual Studio 2019\Projects\EdgeToolbox\EdgeToolbox\ob
 C:\Users\Synful\Documents\Visual Studio 2019\Projects\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.csproj.CopyComplete
 C:\Users\Synful\Documents\Visual Studio 2019\Projects\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.exe
 C:\Users\Synful\Documents\Visual Studio 2019\Projects\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.pdb
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.csproj.AssemblyReference.cache
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogFileDownloader.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogInfo.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogAbout.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogLogin.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogUpdate.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DialogVIN.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DockConsole.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DockXmlEditor.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DockTextEditor.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.DockFileSystem.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.Docks.DockSettings.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.MainForm.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.Forms.UpdateForm.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.Properties.Resources.resources
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.csproj.GenerateResource.cache
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.csproj.CoreCompileInputs.cache
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.exe
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.pdb
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\bin\Debug\EdgeToolbox.exe.config
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\bin\Debug\EdgeToolbox.exe
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\bin\Debug\EdgeToolbox.pdb
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\bin\Debug\SLSUSBNET.dll
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\bin\Debug\System.Reactive.dll
+C:\Users\Synful\Documents\Projects\Tuners\EdgeToolbox\EdgeToolbox\obj\Debug\EdgeToolbox.csproj.CopyComplete

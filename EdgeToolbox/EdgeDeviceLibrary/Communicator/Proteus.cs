@@ -1921,6 +1921,42 @@ namespace EdgeDeviceLibrary.Communicator {
 			return false;
 		}
 
+		public string GetCustomModelPart(bool cachedOk) {
+			int num = nProductIdentifier;
+			if(_evoModel.Equals("UNIDENTIFIED") || !cachedOk) {
+				try {
+					if(_deviceConnector != null) {
+						num = new EdgeDeviceLibrary.FusionService.FusionService().GetModelFromUserSerialNum(_deviceConnector.Email, _deviceConnector.Password, GetSerialNumber());
+					}
+				} catch(WebException) {
+					num = 0;
+				}
+				if(num == 0) {
+					return string.Empty;
+				}
+				string[] array = null;
+				try {
+					if(_deviceConnector != null) {
+						nProductIdentifier = num;
+						_evoModel = new EdgeDeviceLibrary.FusionService.FusionService().GetModelString(_deviceConnector.Email, _deviceConnector.Password, num);
+						array = new EdgeDeviceLibrary.FusionService.FusionService().GetBootloaderInfo(_deviceConnector.Email, _deviceConnector.Password, nProductIdentifier);
+					}
+				} catch(SoapException) {
+					_evoModel = "UNIDENTIFIED";
+					array = null;
+				} catch(WebException) {
+					_evoModel = "UNIDENTIFIED_NO_WEB";
+					array = null;
+				}
+				if(array != null && array[3] == "Encrypted_S19") {
+					base.IsFileFormatEncryptedS19 = true;
+				} else {
+					base.IsFileFormatEncryptedS19 = false;
+				}
+			}
+			return $"[{num}] {_evoModel}";
+		}
+
 		public override string GetPartNumber(bool cachedOk) {
 			if (_evoModel.Equals("UNIDENTIFIED") || !cachedOk) {
 				ushort num = 0;

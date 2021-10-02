@@ -50,7 +50,7 @@ namespace EdgeToolbox {
 				if (e.percentComplete > 0 || e.task != string.Empty) {
 					progressOverall.Value = e.percentComplete;
 					if (e.task != null) {
-						//labelOverallTask.Text = e.task;
+						labelOverallTask.Text = e.task;
 					}
 				}
 				Refresh();
@@ -131,7 +131,7 @@ namespace EdgeToolbox {
 			Invoke((MethodInvoker)delegate {
 				if(p != null) {
 					progressOverall.Value = 0;
-					string workingDir = $"{AppDomain.CurrentDomain.BaseDirectory}Files/{p.GetPartNumber(false)}-{p.PlatformType}";
+					string workingDir = $"{AppDomain.CurrentDomain.BaseDirectory}Files/{p.GetPartNumber(true)}/Storage";
 					p.ChangeDirectory("\\");
 					string[] files = p.FATGetFileList();
 					progressOverall.Maximum = files.Length;
